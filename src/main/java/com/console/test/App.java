@@ -19,6 +19,7 @@ import org.apache.commons.lang.StringUtils;
  * @author DSB
  */
 public class App {
+    private static final String CODIGO_PATTERN_CADENA = "^\\d{1,}\\|\\d{1,}\\|\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])";
     
     private App(){
         
@@ -33,9 +34,14 @@ public class App {
     }
     
     public static void test(){
-        String codigo = "1|206|2018-08-15";
-        String[] output = codigo.split("\\|");
-        System.out.println("output: " + output.length);
+        String tag = "[PRUEBAS-DES]";
+        
+        String codigo = "PED|1|206|2018-08-15";
+        String[] parts = codigo.split("\\|");
+        System.out.println("output: " + parts.length);
+        
+        String origen = parts[0].replace(tag, "");
+        System.out.println("origen: " + origen);
         /*
         TimeZone timeZone = TimeZone.getDefault();
         System.out.println("getDisplayName: " + timeZone.getDisplayName());
@@ -101,6 +107,9 @@ public class App {
     }
 
     public static void main(String[] args) {
+        test();
+        System.out.println("" +CODIGO_PATTERN_CADENA);
+        
         testPattern();
         String cad = "VMX_CUOTA :: No se tiene cuota de bombas para metodo de programacion tradicional";
         if (cad.startsWith("VMX_CUOTA")) {

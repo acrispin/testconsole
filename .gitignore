@@ -17,3 +17,6 @@ buildNumber.properties
 .mvn/timing.properties
 .svn
 logs/
+.classpath
+.project
+.settings/
